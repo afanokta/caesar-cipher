@@ -1,19 +1,18 @@
 function caesar_enc() {
   var cs = document.getElementById('caesar').value;
-
+  var key = parseInt(document.getElementById('key').value);
+  console.log(key)
+  
   // console.log("berhasil")
   let str_result = '';
-  console.log(cs.length)
+  // console.log(cs.length)
   for (let i = 0; i < cs.length; i++) {
     if (cs[i] != ' ') {
 
       let ch = charToInt(cs[i]);
-      if (ch >= 23) {
-        ch = Math.abs((ch + 3) - 26)
-      } else {
-        ch += 3 
-      }
-      // console.log(ch)
+      console.log(ch)
+      ch = (ch+ key) % 26;
+      
       var chr = intToChar(ch);
       str_result += chr
     } else {
@@ -27,7 +26,8 @@ function caesar_enc() {
 
 function caesar_dec() {
   var cs = document.getElementById('cp-caesar').value.toLowerCase();
-
+  var key = parseInt(document.getElementById('key-dec').value);
+  
   // console.log("berhasil")
   let str_result = '';
   console.log(cs.length)
@@ -35,19 +35,15 @@ function caesar_dec() {
     if (cs[i] != ' ') { // MESIR --> cs[0] = M, 
 
       let ch = charToInt(cs[i]);
-      if (ch <= 2) {
-        ch = (ch - 3) + 26
-      } else {
-        ch -= 3
-      }
+      ch = (ch - key) % 26
       // console.log(ch)
-      var chr = intToChar(ch);
-      str_result += chr
-    } else {
+      var chr = intToChar(ch); 
+    } else { 
       str_result += " ";
     }
+    str_result += chr
+    console.log(str_result)
   }
-  console.log(str_result)
   document.getElementById('caesar-dec-result').value = str_result.toUpperCase();
 }
 
@@ -66,4 +62,4 @@ function intToChar(int) {
   // console.log(code);
   return String.fromCharCode(code + int);
 }
-// ======================================================================================
+// =====================================================================================
