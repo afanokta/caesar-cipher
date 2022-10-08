@@ -51,14 +51,19 @@ function caesar_dec() {
   document.getElementById('caesar-dec-result').value = str_result.toUpperCase();
 }
 
+
+// ==================================== Convert Function ==============================
 function charToInt(char) {
   const code = 'a'.charCodeAt(0); //code = 65
   // console.log(code);
   return char.charCodeAt(0) - code;
 }
 
+// References : https://bobbyhadz.com/blog/javascript-convert-integer-to-character#:~:text=To%20convert%20an%20integer%20to,character%20equivalent%20of%20the%20integer.
+
 function intToChar(int) {
   const code = 'A'.charCodeAt(0);
   // console.log(code);
   return String.fromCharCode(code + int);
 }
+// ======================================================================================
